@@ -1,0 +1,47 @@
+This assignment instructions assumes that you have and sql_tutorial directory in your root drive and that you have a HGP directory within the sql_tutorial directory. Within that HGP directory you have the lesson_1.py Python app;
+
+Instructions:  First type clear from the terminal.  This will leave the Terminal empty
+
+1.  Create a new directory in your HGP directory and name it HGP2
+2.  Use the mv command to move your lesson_1.py to the newly created HGP2 directory
+3.  Edit the lesson_1.py by; 
+		changing the connection = create_connection("hgp") to connection = create_connection("HGP2")
+4.  Using the terminal navigte to the HGP2 directory and run the lesson_2.py app by typing 
+			python3 lesson_1.py  This will create a new Sqlite database file file in the directory named HGP2.
+5. Check to make sure the HGP2 file was created by typing ls from the command line.
+6. To access the sqlite> command line type sqlite3 from the terminal. This will enable you to 		      write SQl Queries.
+7.  Enter the following queries;
+
+sqlite> .open hgp2     (this open your database file)
+sqlite> .database      (this command displays the path to your Database File)
+main: /Users/eugenelemon/sql_tutorial/hgp2
+
+sqlite> create table staff(id integer primary key autoincrement,name text not null,cell text not null,position text not null);
+
+sqlite> .table  (this is to check to make sure the staff table was created)
+
+sqlite> insert into staff(name,cell,position) values('Baba Lemon','510.205.0980','Senior Educator Educator');    (This inserts one record into the database staff table)
+
+sqlite> select * from staff; (This checks to make sure a record was inserted)
+
+
+sqlite> create table leader(id integer primary key autoincrement,name text not null,cell text not null,position text not null,staff_id integer not null,foreign key(staff_id) references staff(id));  (This will create a Leader table)
+
+sqlite> .table   (this is to check to make sure the leader table was created)
+leader
+
+sqlite> insert into leader(name,cell,position,staff_id) values('Andrew Lubega','925.727.4611','leader',1);   (This inserts one record into the database leader table)
+
+sqlite> select * from leader;  (This checks to make sure a record was inserted)
+
+sqlite> create table member(id integer primary key autoincrement,name text not null,cell text not null,position text not null,staff_id integer not null,foreign key(staff_id) references staff(id));  (This will create a Member table with references to the Staff table)
+
+sqlite> .table   (this is to check to make sure the member table was created)
+
+sqlite> insert into member(name,cell,position,staff_id) values('Moussa Xxay','934.727.4611','member',1);   (This inserts one record into the database Member table)
+
+sqlite> select * from member;  (This checks to make sure a record was inserted)
+
+8.  Quit the SQL (This will close the sqlite3> command line)
+
+9.  Take a screen shot of all the commands from when you entered the clear command
